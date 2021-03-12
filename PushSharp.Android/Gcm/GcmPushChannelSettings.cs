@@ -8,7 +8,7 @@ namespace PushSharp.Android
 {
 	public class GcmPushChannelSettings : IPushChannelSettings
 	{
-		private const string GCM_SEND_URL = "https://android.googleapis.com/gcm/send";
+		private const string GCM_SEND_URL = "https://fcm.googleapis.com/fcm/send";
 
 		public GcmPushChannelSettings(string senderAuthToken)
 		{

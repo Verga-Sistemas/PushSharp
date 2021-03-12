@@ -84,9 +84,9 @@ namespace PushSharp.Apple
 			if (certificate != null)
 			{
 				var subjectName = certificate.SubjectName.Name;
-
-				if (subjectName.Contains("Apple Production IOS Push Services"))
-					production = true;
+               // throw new Exception("Subjectname = " + subjectName);
+                //if (subjectName.Contains("Apple Production IOS Push Services") || subjectName.Contains("Apple Push Services"))
+                production = bool.Parse(System.Configuration.ConfigurationManager.AppSettings.Get("PushInProduction"));
 			}
 			
 			return production;
@@ -102,8 +102,8 @@ namespace PushSharp.Apple
 				if (!issuerName.Contains("Apple"))
 					throw new ArgumentException("Your Certificate does not appear to be issued by Apple!  Please check to ensure you have the correct certificate!");
 
-				if (production && !subjectName.Contains("Apple Production IOS Push Services"))
-					throw new ArgumentException("You have selected the Production server, yet your Certificate does not appear to be the Production certificate!  Please check to ensure you have the correct certificate!");
+                //if (production && !subjectName.Contains("Apple Production IOS Push Services"))
+                //    throw new ArgumentException("You have selected the Production server, yet your Certificate does not appear to be the Production certificate!  Please check to ensure you have the correct certificate!");
 
 
 				if (!production && !subjectName.Contains("Apple Development IOS Push Services") && !subjectName.Contains("Pass Type ID"))
